@@ -155,6 +155,7 @@ public class TasksService {
     }
 
     @Transactional
+    @PostAuthorize("returnObject.project.admin.username == authentication.name")
     public Task changeState(Long id, TaskState state)  throws InstanceNotFoundException {
 
         Optional<Task> optTask = tasksRepository.findById(id);
