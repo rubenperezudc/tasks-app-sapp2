@@ -49,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     	    .addFilter( new JwtAuthorizationFilter(this.tokenProvider, customAuthenticationManager()))
         	.authorizeRequests()
         	.antMatchers(HttpMethod.GET,  "/api/projects").permitAll() 
-        	.antMatchers(HttpMethod.POST,  "/api/projects/").hasRole("ADMIN")
+        	.antMatchers(HttpMethod.POST,  "/api/projects").hasRole("ADMIN")
         	.antMatchers(HttpMethod.GET,  "/api/projects/{id}").permitAll() //si no estas autenticado no puedes -  no hay front option
         	.antMatchers(HttpMethod.PUT,  "/api/projects/{id}").hasRole("ADMIN")
         	.antMatchers(HttpMethod.DELETE,  "/api/projects/{id}").hasRole("ADMIN")
